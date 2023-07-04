@@ -5,7 +5,7 @@ import time
 
 from webdriver_manager.chrome import ChromeDriverManager
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.get("https://www.saucedemo.com/")
 assert "Swag Labs" in driver.title
 
