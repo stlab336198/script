@@ -1,12 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 
-from webdriver_manager.chrome import ChromeDriverManager
-
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+chrome_options = Options()
+chrome_options.add_argument("--window-size=1920,800")
+chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=chrome_options)
 driver.get("https://www.saucedemo.com/")
 assert "Swag Labs" in driver.title
 
