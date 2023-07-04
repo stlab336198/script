@@ -3,7 +3,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 
-driver=webdriver.Chrome()
+from webdriver_manager.chrome import ChromeDriverManager
+
+driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.get("https://www.saucedemo.com/")
 assert "Swag Labs" in driver.title
 
