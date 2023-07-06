@@ -9,6 +9,7 @@ chrome_options = Options()
 chrome_options.add_argument("--window-size=1920,800")
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=chrome_options)
+driver.implicitly_wait(5)
 driver.get("https://www.saucedemo.com/")
 assert "Swag Labs" in driver.title
 
@@ -22,5 +23,4 @@ passwd.send_keys("secret_sauce")
 passwd.send_keys(Keys.RETURN)
 button=driver.find_element(By.ID,"login-button")
 button.click()
-driver.implicitly_wait(5)
 driver.close()
